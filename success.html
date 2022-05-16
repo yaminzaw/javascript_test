@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Success Page</title>
+        <script type="text/javascript" src="validation.js"></script>
+    </head>
+    <body>
+        <form name="form1" action="success.html" method="get">
+            <div id="success">
+                <h3 id="head">Register Success</h3>
+                <p id="smail"></p>
+                <p id="spass"></p>
+                <p id="sfirst"></p>
+                <p id="slast"></p>
+                <p id="sch1"></p>
+                <p id="sch2"></p>
+            </div>
+
+            <script>
+                function getParams(){
+                    var idx = document.URL.indexOf('?');
+                    console.log("iDx",idx);
+                    var params = new Array();
+                    if (idx != -1) {
+                        var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                        console.log("first params",params);
+                        for (var i=0; i<pairs.length; i++){
+                            nameVal = pairs[i].split('=');
+                            params[nameVal[0]] = nameVal[1];
+                            console.log("nameVal",nameVal);
+                        }
+                    }
+                    return params;
+                    console.log("finalparam",params);
+                }
+                params = getParams();
+                mail = unescape(params["email"]);
+                pwd = unescape(params["pwd"]);
+                first = unescape(params["firstname"]);
+                last = unescape(params["lastname"]);
+                ch1 = unescape(params["check1"]);
+                ch2 = unescape(params["check2"]);
+                document.getElementById("smail").innerHTML=mail;
+                document.getElementById("spass").innerHTML=pwd;
+                document.getElementById("sfirst").innerHTML=first;
+                document.getElementById("slast").innerHTML=last;
+                document.getElementById("sch1").innerHTML=ch1;
+                document.getElementById("sch2").innerHTML=ch2;
+            </script>
+        </form>
+        
+    </body>
+</html>
